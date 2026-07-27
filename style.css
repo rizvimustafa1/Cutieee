@@ -1,259 +1,742 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ======================================================
+   RESET
+====================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #fff5f7;
-    color: #444;
-    overflow: hidden;
+html,body{
+
+    width:100%;
+    height:100%;
+    overflow:hidden;
+
 }
 
+body{
 
-/* Screens */
+    font-family:'Inter',sans-serif;
 
-.screen {
-    display: none;
-    height: 100vh;
-    width: 100%;
-    padding: 30px 25px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    animation: fadeIn 0.8s ease;
-}
+    background:#FFF8F5;
 
-.screen.active {
-    display: flex;
-}
+    color:#2B2B2B;
 
-
-/* Text */
-
-h1 {
-    font-family: 'Pacifico', cursive;
-    color: #e75480;
-    font-size: 38px;
-    margin-bottom: 25px;
-}
-
-h2 {
-    color: #e75480;
-    margin-bottom: 20px;
-    font-size: 25px;
-}
-
-
-p {
-    font-size: 16px;
-    line-height: 1.8;
-    max-width: 330px;
-}
-
-
-/* Buttons */
-
-button {
-    margin-top: 30px;
-    padding: 14px 35px;
-    border: none;
-    border-radius: 50px;
-    background: #ff7aa2;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(255,122,162,0.3);
-    transition: 0.3s;
-}
-
-button:active {
-    transform: scale(0.95);
-}
-
-
-/* Loading */
-
-.loader {
-    width: 220px;
-    height: 8px;
-    background: #ffd6e2;
-    border-radius: 20px;
-    margin-top: 25px;
-    overflow: hidden;
-}
-
-
-.bar {
-    height: 100%;
-    width: 50%;
-    background: #ff7aa2;
-    animation: load 2s infinite;
-}
-
-
-/* Letter */
-
-.letter {
-
-    background: white;
-    padding: 25px;
-    border-radius: 25px;
-    max-height: 45vh;
-    overflow-y: auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    position:relative;
 
 }
 
 
-/* Counter */
 
-.timer {
+/* ======================================================
+   BACKGROUND
+====================================================== */
 
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 12px;
-    margin-top: 25px;
+.background{
 
-}
+    position:fixed;
 
+    inset:0;
 
-.timer div {
+    z-index:-2;
 
-    background:white;
-    padding:15px 8px;
-    border-radius:20px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.06);
-
-}
-
-
-.timer span {
-
-    display:block;
-    font-size:24px;
-    color:#e75480;
-    font-weight:600;
+    background:
+    radial-gradient(circle at top,#FFE3EB 0%,transparent 40%),
+    radial-gradient(circle at bottom,#FFF1E6 0%,transparent 45%),
+    #FFF8F5;
 
 }
 
 
-.timer small {
+
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    backdrop-filter:blur(60px);
+
+}
+
+
+
+/* ======================================================
+   FLOATING HEARTS
+====================================================== */
+
+#hearts{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:-1;
+
+}
+
+.heart{
+
+    position:absolute;
+
+    bottom:-40px;
+
+    opacity:.8;
+
+    animation:heartFloat linear forwards;
+
+}
+
+
+
+/* ======================================================
+   PAGES
+====================================================== */
+
+.page{
+
+    display:none;
+
+    width:100%;
+
+    height:100vh;
+
+    padding:32px 26px;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    animation:fade .7s ease;
+
+}
+
+.page.active{
+
+    display:flex;
+
+}
+
+
+
+/* ======================================================
+   CONTAINER
+====================================================== */
+
+.container{
+
+    width:100%;
+
+    max-width:390px;
+
+    margin:auto;
+
+}
+
+
+
+/* ======================================================
+   TYPOGRAPHY
+====================================================== */
+
+.top-text{
 
     font-size:12px;
 
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:#C1788D;
+
+    margin-bottom:18px;
+
 }
 
 
-.small {
 
-    margin-top:25px;
+h1{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:46px;
+
+    line-height:1.1;
+
+    margin-bottom:24px;
+
+    color:#222;
+
+}
+
+
+
+h2{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:34px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.paragraph{
+
+    line-height:1.9;
+
+    font-size:16px;
+
+    color:#666;
+
+}
+
+
+
+.quote{
+
+    margin-top:30px;
+
+    color:#C1788D;
+
     font-style:italic;
 
 }
 
 
-/* Promise Cards */
 
-.promise-card {
+/* ======================================================
+   BUTTONS
+====================================================== */
+
+button{
+
+    width:100%;
+
+    margin-top:36px;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#D76C82;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:active{
+
+    transform:scale(.97);
+
+}
+
+.loveButton{
+
+    background:#D76C82;
+
+}
+
+.sadButton{
 
     background:white;
-    width:100%;
-    max-width:320px;
-    padding:18px;
-    margin:8px;
+
+    color:#222;
+
+    border:1px solid #E8D6DA;
+
+}
+
+
+
+/* ======================================================
+   LOADER
+====================================================== */
+
+.loader{
+
+    width:220px;
+
+    height:8px;
+
+    background:#F2DDE3;
+
     border-radius:20px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.06);
+
+    margin:35px auto;
+
+    overflow:hidden;
+
+}
+
+.loader span{
+
+    display:block;
+
+    width:35%;
+
+    height:100%;
+
+    background:#D76C82;
+
+    animation:loading 2s infinite;
 
 }
 
 
-/* Final Buttons */
 
-.choice-buttons {
+/* ======================================================
+   COUNTER
+====================================================== */
 
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    max-width:320px;
+.counter{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:14px;
+
+    margin-top:30px;
 
 }
 
+.box{
 
-.no {
+    background:rgba(255,255,255,.75);
 
-    background:#ddd;
+    backdrop-filter:blur(15px);
+
+    border-radius:22px;
+
+    padding:18px 10px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.06);
+
+}
+
+.box span{
+
+    display:block;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#D76C82;
+
+}
+
+.box small{
+
+    color:#777;
+
+    font-size:11px;
+
+}
+/* ======================================================
+   LETTER
+====================================================== */
+
+.letter{
+
+    margin-top:20px;
+
+    max-height:320px;
+
+    overflow-y:auto;
+
+    text-align:left;
+
+    padding-right:8px;
+
+}
+
+.letter p{
+
+    line-height:2;
+
     color:#555;
 
+    font-size:16px;
+
+}
+
+.letter::-webkit-scrollbar{
+
+    width:5px;
+
+}
+
+.letter::-webkit-scrollbar-thumb{
+
+    background:#D76C82;
+
+    border-radius:20px;
+
 }
 
 
-#choiceMessage {
 
-    margin-top:25px;
+/* ======================================================
+   COMPLIMENTS
+====================================================== */
+
+#complimentArea{
+
+    margin-top:30px;
+
+    min-height:260px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:12px;
+
+}
+
+.compliment{
+
+    background:white;
+
+    padding:12px 18px;
+
+    border-radius:30px;
+
+    color:#D76C82;
+
     font-weight:600;
-    color:#e75480;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+    animation:pop .5s forwards;
 
 }
 
 
 
-/* Floating Hearts */
+/* ======================================================
+   SLAP MUSTAFA
+====================================================== */
 
-.heart {
+#mustafaFace{
 
-    position:absolute;
-    color:#ff7aa2;
-    animation: float 6s linear infinite;
-    font-size:20px;
+    width:220px;
+
+    height:220px;
+
+    margin:30px auto;
+
+    background:white;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:110px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:all .08s ease;
+
+}
+
+#mustafaFace:active{
+
+    transform:scale(.86);
 
 }
 
 
 
-/* Animations */
+#slapCounter{
 
-@keyframes fadeIn {
+    margin-top:15px;
 
-    from {
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#D76C82;
+
+}
+
+
+
+#slapMessage{
+
+    min-height:40px;
+
+    margin-top:20px;
+
+    color:#666;
+
+    font-style:italic;
+
+    font-size:16px;
+
+}
+
+
+
+#continueButton{
+
+    display:none;
+
+}
+
+
+
+/* ======================================================
+   FINAL CHOICE
+====================================================== */
+
+.choiceButtons{
+
+    margin-top:40px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+
+/* ======================================================
+   HAPPY PAGE
+====================================================== */
+
+#happy h1{
+
+    font-size:90px;
+
+    animation:pulse 1.5s infinite;
+
+}
+
+
+
+/* ======================================================
+   GOODBYE PAGE
+====================================================== */
+
+.goodbye{
+
+    background:#171717;
+
+    color:white;
+
+}
+
+.goodbye h1{
+
+    color:white;
+
+    font-size:90px;
+
+}
+
+.goodbye h2{
+
+    color:white;
+
+}
+
+.goodbye .paragraph{
+
+    color:#CFCFCF;
+
+}
+
+.goodbye .top-text{
+
+    color:#999;
+
+}
+
+
+
+/* ======================================================
+   ANIMATIONS
+====================================================== */
+
+@keyframes fade{
+
+    from{
+
         opacity:0;
+
         transform:translateY(20px);
+
     }
 
-    to {
+    to{
+
         opacity:1;
+
         transform:translateY(0);
+
     }
 
 }
 
 
-@keyframes load {
 
-    0% {
-        transform:translateX(-100%);
+@keyframes loading{
+
+    from{
+
+        transform:translateX(-180%);
+
     }
 
-    100% {
-        transform:translateX(250%);
+    to{
+
+        transform:translateX(320%);
+
     }
 
 }
 
 
-@keyframes float {
 
-    from {
-        transform:translateY(100vh);
-        opacity:1;
+@keyframes heartFloat{
+
+    from{
+
+        transform:translateY(0);
+
+        opacity:.9;
+
     }
 
-    to {
-        transform:translateY(-10vh);
+    to{
+
+        transform:translateY(-120vh);
+
         opacity:0;
+
+    }
+
+}
+
+
+
+@keyframes pop{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.6);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media(max-width:390px){
+
+    h1{
+
+        font-size:40px;
+
+    }
+
+    h2{
+
+        font-size:30px;
+
+    }
+
+    .paragraph{
+
+        font-size:15px;
+
+    }
+
+    #mustafaFace{
+
+        width:180px;
+
+        height:180px;
+
+        font-size:90px;
+
     }
 
 }
