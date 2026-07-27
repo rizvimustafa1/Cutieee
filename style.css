@@ -118,6 +118,8 @@ body{
 
     text-align:center;
 
+   overflow-y:auto;
+
     animation:fade .7s ease;
 
 }
