@@ -1,1 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fff5f7;
+    color: #444;
+    overflow: hidden;
+}
+
+
+/* Screens */
+
+.screen {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    padding: 30px 25px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: fadeIn 0.8s ease;
+}
+
+.screen.active {
+    display: flex;
+}
+
+
+/* Text */
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: #e75480;
+    font-size: 38px;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #e75480;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+
+p {
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 330px;
+}
+
+
+/* Buttons */
+
+button {
+    margin-top: 30px;
+    padding: 14px 35px;
+    border: none;
+    border-radius: 50px;
+    background: #ff7aa2;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255,122,162,0.3);
+    transition: 0.3s;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+
+/* Loading */
+
+.loader {
+    width: 220px;
+    height: 8px;
+    background: #ffd6e2;
+    border-radius: 20px;
+    margin-top: 25px;
+    overflow: hidden;
+}
+
+
+.bar {
+    height: 100%;
+    width: 50%;
+    background: #ff7aa2;
+    animation: load 2s infinite;
+}
+
+
+/* Letter */
+
+.letter {
+
+    background: white;
+    padding: 25px;
+    border-radius: 25px;
+    max-height: 45vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+}
+
+
+/* Counter */
+
+.timer {
+
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 12px;
+    margin-top: 25px;
+
+}
+
+
+.timer div {
+
+    background:white;
+    padding:15px 8px;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.06);
+
+}
+
+
+.timer span {
+
+    display:block;
+    font-size:24px;
+    color:#e75480;
+    font-weight:600;
+
+}
+
+
+.timer small {
+
+    font-size:12px;
+
+}
+
+
+.small {
+
+    margin-top:25px;
+    font-style:italic;
+
+}
+
+
+/* Promise Cards */
+
+.promise-card {
+
+    background:white;
+    width:100%;
+    max-width:320px;
+    padding:18px;
+    margin:8px;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.06);
+
+}
+
+
+/* Final Buttons */
+
+.choice-buttons {
+
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    max-width:320px;
+
+}
+
+
+.no {
+
+    background:#ddd;
+    color:#555;
+
+}
+
+
+#choiceMessage {
+
+    margin-top:25px;
+    font-weight:600;
+    color:#e75480;
+
+}
+
+
+
+/* Floating Hearts */
+
+.heart {
+
+    position:absolute;
+    color:#ff7aa2;
+    animation: float 6s linear infinite;
+    font-size:20px;
+
+}
+
+
+
+/* Animations */
+
+@keyframes fadeIn {
+
+    from {
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+@keyframes load {
+
+    0% {
+        transform:translateX(-100%);
+    }
+
+    100% {
+        transform:translateX(250%);
+    }
+
+}
+
+
+@keyframes float {
+
+    from {
+        transform:translateY(100vh);
+        opacity:1;
+    }
+
+    to {
+        transform:translateY(-10vh);
+        opacity:0;
+    }
+
+}
