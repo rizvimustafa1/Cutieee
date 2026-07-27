@@ -1,1 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For My Cutiee ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- Floating Hearts -->
+<div id="hearts"></div>
+
+<!-- Loading Screen -->
+<section id="loading" class="screen active">
+
+    <h1>❤️</h1>
+
+    <h2>Loading something made just for you...</h2>
+
+    <div class="loader">
+        <div class="bar"></div>
+    </div>
+
+</section>
+
+<!-- Welcome Screen -->
+<section id="welcome" class="screen">
+
+    <h1>Hi Cutiee ❤️</h1>
+
+    <p>
+        I made this because you deserve effort.<br><br>
+
+        Not because I expect anything in return...
+    </p>
+
+    <button onclick="nextScreen('intro')">
+        Enter ❤️
+    </button>
+
+</section>
+
+<!-- Intro -->
+<section id="intro" class="screen">
+
+    <h1>🌸</h1>
+
+    <p>
+
+        Before you continue...
+
+        <br><br>
+
+        Please read everything.
+
+        <br><br>
+
+        Every page was made thinking about you.
+
+    </p>
+
+    <button onclick="nextScreen('letter')">
+
+        Continue
+
+    </button>
+
+</section>
+
+<!-- Letter -->
+<section id="letter" class="screen">
+
+    <h1>💌</h1>
+
+    <h2>To My Cutiee</h2>
+
+    <div class="letter">
+
+        <!-- Replace this with your own letter later -->
+
+        <p>
+
+            My dearest Cutiee,
+
+            <br><br>
+
+            This space is waiting for the letter I'm writing just for you.
+
+            <br><br>
+
+            Every word here will come from my heart.
+
+            <br><br>
+
+            Love,
+
+            <br>
+
+            Mustafa ❤️
+
+        </p>
+
+    </div>
+
+    <button onclick="nextScreen('counter')">
+
+        Next ❤️
+
+    </button>
+
+</section>
+
+<!-- Relationship Counter -->
+<section id="counter" class="screen">
+
+    <h1>🐧❤️</h1>
+
+    <h2>Our Story</h2>
+
+    <p>Since 13 April 2025</p>
+
+    <div class="timer">
+
+        <div><span id="years">0</span><small>Years</small></div>
+
+        <div><span id="months">0</span><small>Months</small></div>
+
+        <div><span id="days">0</span><small>Days</small></div>
+
+        <div><span id="hours">0</span><small>Hours</small></div>
+
+        <div><span id="minutes">0</span><small>Minutes</small></div>
+
+        <div><span id="seconds">0</span><small>Seconds</small></div>
+
+    </div>
+
+    <p class="small">
+
+        Every second with you has mattered.
+
+    </p>
+
+    <button onclick="nextScreen('sorry')">
+
+        Continue ❤️
+
+    </button>
+
+</section>
+
+<!-- Sorry -->
+<section id="sorry" class="screen">
+
+    <h1>❤️</h1>
+
+    <h2>I'm Sorry</h2>
+
+    <p>
+
+        I'm sorry.
+
+        <br><br>
+
+        I know words aren't enough.
+
+        <br><br>
+
+        That's why I'm trying to show you my effort.
+
+        <br><br>
+
+        I don't expect instant forgiveness.
+
+        <br><br>
+
+        I only hope I can earn it.
+
+    </p>
+
+    <button onclick="nextScreen('promises')">
+
+        Next ❤️
+
+    </button>
+
+</section>
+
+<!-- Promises -->
+<section id="promises" class="screen">
+
+    <h1>🌸</h1>
+
+    <h2>My Promises</h2>
+
+    <div class="promise-card">❤️ Listen more</div>
+
+    <div class="promise-card">❤️ Understand you better</div>
+
+    <div class="promise-card">❤️ Put in more effort</div>
+
+    <div class="promise-card">❤️ Keep choosing you</div>
+
+    <button onclick="nextScreen('final')">
+
+        One Last Click ❤️
+
+    </button>
+
+</section>
+
+<!-- Final -->
+<section id="final" class="screen">
+
+    <h1>🐧❤️</h1>
+
+    <h2>Thank You</h2>
+
+    <p>
+
+        Thank you for reading everything.
+
+        <br><br>
+
+        Whatever you're feeling,
+
+        I want it to be because it's truly how you feel.
+
+    </p>
+
+    <div class="choice-buttons">
+
+        <button class="yes" onclick="showChoice('yes')">
+
+            💖 Let's Fix Us
+
+        </button>
+
+        <button class="no" onclick="showChoice('no')">
+
+            💭 I Need More Time
+
+        </button>
+
+    </div>
+
+    <div id="choiceMessage"></div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
