@@ -1,62 +1,43 @@
-// Loading screen
-setTimeout(() => {
+// ======================================================
+// PAGES
+// ======================================================
 
-    document.getElementById("loading").classList.remove("active");
+const pages = document.querySelectorAll(".page");
 
-    document.getElementById("welcome").classList.add("active");
+function nextPage(id){
 
-}, 2500);
+    pages.forEach(page=>page.classList.remove("active"));
 
+    document.getElementById(id).classList.add("active");
 
-// Change screens
-function nextScreen(screenId) {
-
-    const current = document.querySelector(".screen.active");
-
-    if (current) {
-        current.classList.remove("active");
-    }
-
-    document.getElementById(screenId).classList.add("active");
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
 }
 
 
 
-// Floating hearts
+// ======================================================
+// LOADING
+// ======================================================
 
-function createHeart(){
-
-    const heart = document.createElement("div");
-
-    heart.classList.add("heart");
-
-    heart.innerHTML = "❤️";
-
-    heart.style.left = Math.random() * 100 + "%";
-
-    heart.style.animationDuration =
-        (Math.random() * 3 + 3) + "s";
-
-
-    document.getElementById("hearts").appendChild(heart);
-
+window.addEventListener("load",()=>{
 
     setTimeout(()=>{
 
-        heart.remove();
+        nextPage("welcome");
 
-    },6000);
+    },2500);
 
-}
-
-
-setInterval(createHeart,500);
+});
 
 
 
-
-// Relationship Counter
+// ======================================================
+// RELATIONSHIP COUNTER
+// ======================================================
 
 const startDate = new Date("2025-04-13T00:00:00");
 
@@ -64,103 +45,320 @@ function updateCounter(){
 
     const now = new Date();
 
+    let diff = now-startDate;
 
-    let difference = now - startDate;
+    let seconds = Math.floor(diff/1000);
 
+    let minutes = Math.floor(seconds/60);
 
-    let seconds = Math.floor(difference / 1000);
+    let hours = Math.floor(minutes/60);
 
-    let minutes = Math.floor(seconds / 60);
+    let days = Math.floor(hours/24);
 
-    let hours = Math.floor(minutes / 60);
+    const years = Math.floor(days/365);
 
-    let days = Math.floor(hours / 24);
+    days -= years*365;
 
+    const months = Math.floor(days/30);
 
+    days -= months*30;
 
-    let years = Math.floor(days / 365);
+    hours%=24;
 
-    days = days % 365;
+    minutes%=60;
 
+    seconds%=60;
 
-    let months = Math.floor(days / 30);
-
-    days = days % 30;
-
-
-    hours = hours % 24;
-
-    minutes = minutes % 60;
-
-    seconds = seconds % 60;
-
-
-
-    document.getElementById("years").innerHTML = years;
-
-    document.getElementById("months").innerHTML = months;
-
-    document.getElementById("days").innerHTML = days;
-
-    document.getElementById("hours").innerHTML = hours;
-
-    document.getElementById("minutes").innerHTML = minutes;
-
-    document.getElementById("seconds").innerHTML = seconds;
-
+    document.getElementById("years").textContent=years;
+    document.getElementById("months").textContent=months;
+    document.getElementById("days").textContent=days;
+    document.getElementById("hours").textContent=hours;
+    document.getElementById("minutes").textContent=minutes;
+    document.getElementById("seconds").textContent=seconds;
 
 }
-
-
-setInterval(updateCounter,1000);
 
 updateCounter();
 
+setInterval(updateCounter,1000);
 
 
 
+// ======================================================
+// FLOATING HEARTS
+// ======================================================
 
-// Final choice messages
+const heartContainer=document.getElementById("hearts");
 
-function showChoice(choice){
+function createHeart(){
 
+    const heart=document.createElement("div");
 
-    const message =
-    document.getElementById("choiceMessage");
+    heart.className="heart";
 
+    heart.innerHTML=Math.random()>0.5?"❤":"♡";
 
+    heart.style.left=Math.random()*100+"%";
 
-    if(choice === "yes"){
+    heart.style.fontSize=(14+Math.random()*20)+"px";
 
-        message.innerHTML =
-        `
-        ❤️ Thank you for giving us a chance.
+    heart.style.animationDuration=(6+Math.random()*4)+"s";
 
-        <br><br>
+    heartContainer.appendChild(heart);
 
-        I promise to keep proving my love
-        through my actions, not only words.
-        `;
+    setTimeout(()=>{
 
-    }
+        heart.remove();
 
-
-    else {
-
-
-        message.innerHTML =
-        `
-        ❤️ I understand.
-
-        <br><br>
-
-        Take the time you need.
-
-        I will always respect your feelings
-        and be grateful for our memories.
-        `;
-
-    }
-
+    },10000);
 
 }
+// ======================================================
+// COMPLIMENT WALL
+// ======================================================
+
+const complimentArea = document.getElementById("complimentArea");
+
+const compliments = [
+
+"Beautiful ❤️",
+"Pretty 🌸",
+"Cute 🥹",
+"Hot 😮‍💨",
+"My Penguin 🐧",
+"Ice Cream Addict 🍦",
+"Your Smile",
+"Your Laugh",
+"Your Eyes",
+"Your Voice",
+"Your Kind Heart",
+"Your Little Attitude 😂",
+"The Way You Care",
+"My Favourite Notification ❤️",
+"My Safe Place",
+"The Way You Say My Name",
+"Your Good Morning Texts",
+"The Way You Get Excited",
+"The Way You Laugh At Me",
+"My Happiness",
+"My Peace",
+"My Favourite Human",
+"My Home ❤️",
+"Everything About You"
+
+];
+
+let complimentIndex = 0;
+
+function addCompliment(){
+
+    if(complimentIndex >= compliments.length) return;
+
+    const bubble = document.createElement("div");
+
+    bubble.className = "compliment";
+
+    bubble.innerHTML = compliments[complimentIndex];
+
+    bubble.style.transform =
+        `rotate(${Math.random()*12-6}deg)`;
+
+    complimentArea.appendChild(bubble);
+
+    complimentIndex++;
+
+}
+
+setInterval(addCompliment,900);
+
+
+
+// ======================================================
+// SLAP MUSTAFA
+// ======================================================
+
+const face = document.getElementById("mustafaFace");
+const slapCounter = document.getElementById("slapCounter");
+const slapMessage = document.getElementById("slapMessage");
+const continueButton = document.getElementById("continueButton");
+
+let slaps = 0;
+
+const slapMessages = [
+
+"Ouch 😭",
+
+"Fair enough.",
+
+"I deserved that.",
+
+"That one actually hurt.",
+
+"Okay okay 😂",
+
+"Please have mercy.",
+
+"Critical Hit!",
+
+"Combo!",
+
+"My fault.",
+
+"Still angry? 😅",
+
+"You slap surprisingly hard.",
+
+"I promise I'm listening.",
+
+"I won't dodge it.",
+
+"That was personal 😭",
+
+"My ancestors felt that.",
+
+"I'm running out of cheeks.",
+
+"I regret everything.",
+
+"Can we negotiate? 😂",
+
+"Emotional Damage!",
+
+"Another one??"
+
+];
+
+function randomMessage(){
+
+    return slapMessages[
+        Math.floor(Math.random()*slapMessages.length)
+    ];
+
+}
+
+function floatingText(text){
+
+    const div=document.createElement("div");
+
+    div.innerHTML=text;
+
+    div.style.position="fixed";
+
+    const rect=face.getBoundingClientRect();
+
+    div.style.left=(rect.left+rect.width/2)+"px";
+
+    div.style.top=(rect.top+20)+"px";
+
+    div.style.transform="translateX(-50%)";
+
+    div.style.fontWeight="700";
+
+    div.style.color="#D76C82";
+
+    div.style.pointerEvents="none";
+
+    div.style.zIndex="9999";
+
+    div.style.transition="all .8s ease";
+
+    document.body.appendChild(div);
+
+    setTimeout(()=>{
+
+        div.style.top=(rect.top-40)+"px";
+
+        div.style.opacity="0";
+
+    },30);
+
+    setTimeout(()=>{
+
+        div.remove();
+
+    },900);
+
+}
+
+function shake(){
+
+    document.body.animate([
+
+        {transform:"translateX(0px)"},
+        {transform:"translateX(-6px)"},
+        {transform:"translateX(6px)"},
+        {transform:"translateX(-5px)"},
+        {transform:"translateX(5px)"},
+        {transform:"translateX(0px)"}
+
+    ],{
+
+        duration:180
+
+    });
+
+}
+
+face.addEventListener("click",()=>{
+
+    slaps++;
+
+    slapCounter.innerHTML = slaps + " / 10 Slaps";
+
+    const msg = randomMessage();
+
+    slapMessage.innerHTML = msg;
+
+    floatingText(msg);
+
+    shake();
+
+    face.style.transform =
+        `scale(.84) rotate(${Math.random()*18-9}deg)`;
+
+    setTimeout(()=>{
+
+        face.style.transform="scale(1) rotate(0deg)";
+
+    },100);
+
+    if(slaps===10){
+
+        continueButton.style.display="block";
+
+        slapMessage.innerHTML =
+        "❤️ Hope you're feeling a little better now. You can still keep slapping me 😂";
+
+    }
+
+    if(slaps===25){
+
+        slapMessage.innerHTML =
+        "🏆 Achievement Unlocked: Professional Mustafa Slapper";
+
+    }
+
+    if(slaps===50){
+
+        slapMessage.innerHTML =
+        "😂 Are you trying to unlock a secret ending?";
+
+    }
+
+    if(slaps===75){
+
+        slapMessage.innerHTML =
+        "😭 My face has officially left the chat.";
+
+    }
+
+    if(slaps===100){
+
+        slapMessage.innerHTML =
+        "🏆 Congratulations. You've defeated Mustafa.";
+
+    }
+
+});
+
+setInterval(createHeart,700);
