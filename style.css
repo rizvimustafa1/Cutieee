@@ -614,20 +614,6 @@ FINAL DECISION
 
 }
 
-.endingPage{
-
-    display:none;
-
-    min-height:100vh;
-
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-
-    padding:80px 8%;
-
-}
 
 .endingCard{
 
@@ -647,17 +633,39 @@ FINAL DECISION
 
 #happyEnding{
 
-    background:
-    linear-gradient(180deg,#fff7f7,#ffe8ef,#fffdfd);
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:linear-gradient(180deg,#fff7f7,#ffe8ef,#fffdfd);
+
+    padding:80px 8%;
 
 }
 
 #sadEnding{
 
-    background:
-    linear-gradient(180deg,#2c2c38,#444,#2b2b34);
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:linear-gradient(180deg,#2c2c38,#444,#2b2b34);
 
     color:white;
+
+    padding:80px 8%;
 
 }
 
