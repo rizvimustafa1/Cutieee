@@ -83,7 +83,9 @@ COMPLIMENTS
 =========================== */
 
 const compliments=[
-
+    
+"Meri Cutieee",  
+    
 "You're my favourite notification ❤️",
 
 "Your smile makes everything better 😊",
@@ -152,17 +154,17 @@ const gift=document.getElementById("giftResult");
 
 const gifts=[
 
-"🍫 Chocolate Date",
+"Ethnic ka Suit",
 
 "🌹 Flowers",
 
-"🐧 Penguin Plushie",
+"🐧 Penguin Soft Toy",
 
 "💌 Handwritten Letter",
 
 "🎁 Surprise Gift",
 
-"👑 Anything You Want"
+"Me <3"
 
 ];
 
@@ -203,7 +205,7 @@ yesBtn.addEventListener("click", () => {
 
         <div class="endingCard">
 
-            <h1>❤️ Thank You ❤️</h1>
+            <h1>Thank You</h1>
 
             <p>
 
@@ -215,7 +217,7 @@ yesBtn.addEventListener("click", () => {
 
             </p>
 
-            <h3>Our story continues ❤️</h3>
+            <h3>Our story continues </h3>
 
         </div>
 
@@ -243,13 +245,15 @@ noBtn.addEventListener("click", () => {
 
         <div class="endingCard">
 
-            <h1>💔 Goodbye Cutiee</h1>
+            <h1>Goodbye Cutiee</h1>
 
             <p>
 
                 If this is really your decision...
 
                 I'll respect it.
+
+                Just know that I never wanted to hurt you,
 
                 Thank you for every smile,
                 every laugh,
