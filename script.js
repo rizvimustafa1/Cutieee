@@ -188,35 +188,98 @@ dice.style.transform="rotate(0deg)";
 FINAL DECISION
 =========================== */
 
-const yesBtn=document.getElementById("yesBtn");
-const noBtn=document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 
-const happyEnding=document.getElementById("happyEnding");
-const sadEnding=document.getElementById("sadEnding");
-
-yesBtn.addEventListener("click",()=>{
-
-    happyEnding.style.display="flex";
-
-    happyEnding.scrollIntoView({
-
-        behavior:"smooth"
-
-    });
+yesBtn.addEventListener("click", () => {
 
     createConfetti();
 
-});
+    const section = document.createElement("section");
 
-noBtn.addEventListener("click",()=>{
+    section.id = "happyEnding";
 
-    sadEnding.style.display="flex";
+    section.innerHTML = `
 
-    sadEnding.scrollIntoView({
+        <div class="endingCard">
 
-        behavior:"smooth"
+            <h1>❤️ Thank You ❤️</h1>
+
+            <p>
+
+                Thank you for giving me another chance.
+
+                I promise this won't just be another promise.
+
+                I'll let my actions prove everything I couldn't put into words.
+
+            </p>
+
+            <h3>Our story continues ❤️</h3>
+
+        </div>
+
+    `;
+
+    document.body.insertBefore(section, document.querySelector("footer"));
+
+    section.scrollIntoView({
+
+        behavior: "smooth"
 
     });
+
+    yesBtn.disabled = true;
+    noBtn.disabled = true;
+
+});
+noBtn.addEventListener("click", () => {
+
+    const section = document.createElement("section");
+
+    section.id = "sadEnding";
+
+    section.innerHTML = `
+
+        <div class="endingCard">
+
+            <h1>💔 Goodbye Cutiee</h1>
+
+            <p>
+
+                If this is really your decision...
+
+                I'll respect it.
+
+                Thank you for every smile,
+                every laugh,
+                every memory,
+                and every moment we shared.
+
+                I genuinely hope life gives you every happiness you deserve.
+
+            </p>
+
+            <h3>
+
+                Goodbye ❤️
+
+            </h3>
+
+        </div>
+
+    `;
+
+    document.body.insertBefore(section, document.querySelector("footer"));
+
+    section.scrollIntoView({
+
+        behavior: "smooth"
+
+    });
+
+    yesBtn.disabled = true;
+    noBtn.disabled = true;
 
 });
 
