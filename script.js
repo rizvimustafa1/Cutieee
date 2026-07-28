@@ -1,364 +1,314 @@
-// ======================================================
-// PAGES
-// ======================================================
-
-const pages = document.querySelectorAll(".page");
-
-function nextPage(id){
-
-    pages.forEach(page=>page.classList.remove("active"));
-
-    document.getElementById(id).classList.add("active");
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-
-// ======================================================
-// LOADING
-// ======================================================
-
-window.addEventListener("load",()=>{
-
-    setTimeout(()=>{
-
-        nextPage("welcome");
-
-    },2500);
-
-});
-
-
-
-// ======================================================
-// RELATIONSHIP COUNTER
-// ======================================================
-
-const startDate = new Date("2025-04-13T00:00:00");
-
-function updateCounter(){
-
-    const now = new Date();
-
-    let diff = now-startDate;
-
-    let seconds = Math.floor(diff/1000);
-
-    let minutes = Math.floor(seconds/60);
-
-    let hours = Math.floor(minutes/60);
-
-    let days = Math.floor(hours/24);
-
-    const years = Math.floor(days/365);
-
-    days -= years*365;
-
-    const months = Math.floor(days/30);
-
-    days -= months*30;
-
-    hours%=24;
-
-    minutes%=60;
-
-    seconds%=60;
-
-    document.getElementById("years").textContent=years;
-    document.getElementById("months").textContent=months;
-    document.getElementById("days").textContent=days;
-    document.getElementById("hours").textContent=hours;
-    document.getElementById("minutes").textContent=minutes;
-    document.getElementById("seconds").textContent=seconds;
-
-}
-
-updateCounter();
-
-setInterval(updateCounter,1000);
-
-
-
-// ======================================================
-// FLOATING HEARTS
-// ======================================================
-
-const heartContainer=document.getElementById("hearts");
-
-function createHeart(){
-
-    const heart=document.createElement("div");
-
-    heart.className="heart";
-
-    heart.innerHTML=Math.random()>0.5?"❤":"♡";
-
-    heart.style.left=Math.random()*100+"%";
-
-    heart.style.fontSize=(14+Math.random()*20)+"px";
-
-    heart.style.animationDuration=(6+Math.random()*4)+"s";
-
-    heartContainer.appendChild(heart);
-
-    setTimeout(()=>{
-
-        heart.remove();
-
-    },10000);
-
-}
-// ======================================================
-// COMPLIMENT WALL
-// ======================================================
-
-const complimentArea = document.getElementById("complimentArea");
-
-const compliments = [
-
-"Beautiful ❤️",
-"Pretty 🌸",
-"Cute 🥹",
-"Hot 😮‍💨",
-"My Penguin 🐧",
-"Ice Cream Addict 🍦",
-"Your Smile",
-"Your Laugh",
-"Your Eyes",
-"Your Voice",
-"Your Kind Heart",
-"Your Little Attitude 😂",
-"The Way You Care",
-"My Favourite Notification ❤️",
-"My Safe Place",
-"The Way You Say My Name",
-"Your Good Morning Texts",
-"The Way You Get Excited",
-"The Way You Laugh At Me",
-"My Happiness",
-"My Peace",
-"My Favourite Human",
-"My Home ❤️",
-"Everything About You"
-
-];
-
-let complimentIndex = 0;
-
-function addCompliment(){
-
-    if(complimentIndex >= compliments.length) return;
-
-    const bubble = document.createElement("div");
-
-    bubble.className = "compliment";
-
-    bubble.innerHTML = compliments[complimentIndex];
-
-    bubble.style.transform =
-        `rotate(${Math.random()*12-6}deg)`;
-
-    complimentArea.appendChild(bubble);
-
-    complimentIndex++;
-
-}
-
-setInterval(addCompliment,900);
-
-
-
-// ======================================================
-// SLAP MUSTAFA
-// ======================================================
-
-const face = document.getElementById("mustafaFace");
-const slapCounter = document.getElementById("slapCounter");
+/* ===========================
+SLAP MUSTAFA
+=========================== */
+
+const slapBtn = document.getElementById("slapButton");
+const slapCount = document.getElementById("slapCount");
 const slapMessage = document.getElementById("slapMessage");
-const continueButton = document.getElementById("continueButton");
+const mustafaFace = document.getElementById("mustafaFace");
 
 let slaps = 0;
 
-const slapMessages = [
-
-"Ouch 😭",
-
-"Fair enough.",
-
-"I deserved that.",
-
-"That one actually hurt.",
-
-"Okay okay 😂",
-
-"Please have mercy.",
-
-"Critical Hit!",
-
-"Combo!",
-
-"My fault.",
-
-"Still angry? 😅",
-
-"You slap surprisingly hard.",
-
-"I promise I'm listening.",
-
-"I won't dodge it.",
-
-"That was personal 😭",
-
-"My ancestors felt that.",
-
-"I'm running out of cheeks.",
-
-"I regret everything.",
-
-"Can we negotiate? 😂",
-
-"Emotional Damage!",
-
-"Another one??"
-
-];
-
-function randomMessage(){
-
-    return slapMessages[
-        Math.floor(Math.random()*slapMessages.length)
-    ];
-
-}
-
-function floatingText(text){
-
-    const div=document.createElement("div");
-
-    div.innerHTML=text;
-
-    div.style.position="fixed";
-
-    const rect=face.getBoundingClientRect();
-
-    div.style.left=(rect.left+rect.width/2)+"px";
-
-    div.style.top=(rect.top+20)+"px";
-
-    div.style.transform="translateX(-50%)";
-
-    div.style.fontWeight="700";
-
-    div.style.color="#D76C82";
-
-    div.style.pointerEvents="none";
-
-    div.style.zIndex="9999";
-
-    div.style.transition="all .8s ease";
-
-    document.body.appendChild(div);
-
-    setTimeout(()=>{
-
-        div.style.top=(rect.top-40)+"px";
-
-        div.style.opacity="0";
-
-    },30);
-
-    setTimeout(()=>{
-
-        div.remove();
-
-    },900);
-
-}
-
-function shake(){
-
-    document.body.animate([
-
-        {transform:"translateX(0px)"},
-        {transform:"translateX(-6px)"},
-        {transform:"translateX(6px)"},
-        {transform:"translateX(-5px)"},
-        {transform:"translateX(5px)"},
-        {transform:"translateX(0px)"}
-
-    ],{
-
-        duration:180
-
-    });
-
-}
-
-face.addEventListener("click",()=>{
+slapBtn.addEventListener("click", () => {
 
     slaps++;
 
-    slapCounter.innerHTML = slaps + " / 10 Slaps";
+    slapCount.innerText = slaps + " Slaps";
 
-    const msg = randomMessage();
+    mustafaFace.style.transform = "translateX(-18px) rotate(-8deg)";
 
-    slapMessage.innerHTML = msg;
+    setTimeout(() => {
+        mustafaFace.style.transform = "translateX(18px) rotate(8deg)";
+    }, 70);
 
-    floatingText(msg);
+    setTimeout(() => {
+        mustafaFace.style.transform = "translateX(0)";
+    }, 140);
 
-    shake();
+    if(slaps < 5){
 
-    face.style.transform =
-        `scale(.84) rotate(${Math.random()*18-9}deg)`;
-
-    setTimeout(()=>{
-
-        face.style.transform="scale(1) rotate(0deg)";
-
-    },100);
-
-    if(slaps===10){
-
-        continueButton.style.display="block";
-
-        slapMessage.innerHTML =
-        "❤️ Hope you're feeling a little better now. You can still keep slapping me 😂";
+        slapMessage.innerText =
+        "Okay... maybe I should listen more 😭";
 
     }
 
-    if(slaps===25){
+    else if(slaps < 10){
 
-        slapMessage.innerHTML =
-        "🏆 Achievement Unlocked: Professional Mustafa Slapper";
-
-    }
-
-    if(slaps===50){
-
-        slapMessage.innerHTML =
-        "😂 Are you trying to unlock a secret ending?";
+        slapMessage.innerText =
+        "I definitely deserved that 😂";
 
     }
 
-    if(slaps===75){
+    else if(slaps < 20){
 
-        slapMessage.innerHTML =
-        "😭 My face has officially left the chat.";
+        slapMessage.innerText =
+        "Fine... my ego has officially disappeared 💀";
 
     }
 
-    if(slaps===100){
+    else if(slaps < 30){
 
-        slapMessage.innerHTML =
-        "🏆 Congratulations. You've defeated Mustafa.";
+        slapMessage.innerText =
+        "Lesson learned. Cutiee is always right ❤️";
+
+    }
+
+    else{
+
+        slapMessage.innerText =
+        "Achievement Unlocked: Mustafa has been humbled 😂👑";
 
     }
 
 });
 
-setInterval(createHeart,700);
+
+/* ===========================
+LOVE CARDS
+=========================== */
+
+document.querySelectorAll(".loveCard").forEach(card=>{
+
+    card.addEventListener("click",()=>{
+
+        card.classList.toggle("flip");
+
+    });
+
+});
+
+
+/* ===========================
+COMPLIMENTS
+=========================== */
+
+const compliments=[
+
+"You're my favourite notification ❤️",
+
+"Your smile makes everything better 😊",
+
+"I could never get bored of talking to you.",
+
+"You look cute even when you're angry 😂",
+
+"You make ordinary days feel special.",
+
+"You're the best thing that's happened to me.",
+
+"I still get excited when I see your name.",
+
+"Thank you for being you ❤️",
+
+"Your laugh is my favourite sound.",
+
+"I honestly won the lottery when I met you.",
+
+"You'll always be my favourite penguin 🐧",
+
+"I don't need perfect days, I just want days with you."
+
+];
+
+const complimentText=document.getElementById("complimentText");
+const complimentBtn=document.getElementById("complimentBtn");
+
+complimentBtn.addEventListener("click",()=>{
+
+    const random=Math.floor(Math.random()*compliments.length);
+
+    complimentText.innerText=compliments[random];
+
+});
+
+
+/* ===========================
+DATE
+=========================== */
+
+const dates=document.querySelectorAll(".dateChoice");
+const dateAnswer=document.getElementById("dateAnswer");
+
+dates.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+dateAnswer.innerHTML=
+
+"Perfect ❤️<br>Looks like 5th September just got even more exciting.";
+
+});
+
+});
+
+
+/* ===========================
+DICE GAME
+=========================== */
+
+const rollBtn=document.getElementById("rollDice");
+const dice=document.getElementById("dice");
+const gift=document.getElementById("giftResult");
+
+const gifts=[
+
+"🍫 Chocolate Date",
+
+"🌹 Flowers",
+
+"🐧 Penguin Plushie",
+
+"💌 Handwritten Letter",
+
+"🎁 Surprise Gift",
+
+"👑 Anything You Want"
+
+];
+
+rollBtn.addEventListener("click",()=>{
+
+dice.style.transform="rotate(720deg)";
+
+setTimeout(()=>{
+
+const random=Math.floor(Math.random()*6);
+
+gift.innerText="You won: "+gifts[random];
+
+dice.innerText=random+1;
+
+dice.style.transform="rotate(0deg)";
+
+},600);
+
+});
+
+
+/* ===========================
+FINAL BUTTON
+=========================== */
+
+const forgive=document.getElementById("forgiveBtn");
+const ending=document.getElementById("endingText");
+
+forgive.addEventListener("click",()=>{
+
+ending.innerHTML=
+
+"🥹❤️ Thank you for reaching the end.<br>I hope this little website made you smile even a tiny bit.";
+
+createConfetti();
+
+});
+
+
+/* ===========================
+FLOATING HEARTS
+=========================== */
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(18+Math.random()*20)+"px";
+
+heart.style.animationDuration=(8+Math.random()*7)+"s";
+
+document.getElementById("particles").appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},15000);
+
+}
+
+setInterval(createHeart,500);
+
+
+/* ===========================
+CONFETTI
+=========================== */
+
+function createConfetti(){
+
+for(let i=0;i<120;i++){
+
+let confetti=document.createElement("div");
+
+confetti.innerHTML=["❤️","✨","💖","🌸","💕"][Math.floor(Math.random()*5)];
+
+confetti.style.position="fixed";
+
+confetti.style.left=Math.random()*100+"vw";
+
+confetti.style.top="-20px";
+
+confetti.style.fontSize=(15+Math.random()*15)+"px";
+
+confetti.style.pointerEvents="none";
+
+confetti.style.transition="4s linear";
+
+document.body.appendChild(confetti);
+
+setTimeout(()=>{
+
+confetti.style.transform=
+`translateY(${window.innerHeight+200}px)
+rotate(${Math.random()*720}deg)`;
+
+confetti.style.opacity=0;
+
+},50);
+
+setTimeout(()=>{
+
+confetti.remove();
+
+},4500);
+
+}
+
+}
+
+
+/* ===========================
+SCROLL ANIMATION
+=========================== */
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},{threshold:.2});
+
+document.querySelectorAll("section").forEach(section=>{
+
+section.style.opacity="0";
+
+section.style.transform="translateY(80px)";
+
+section.style.transition="1s";
+
+observer.observe(section);
+
+});
