@@ -1,77 +1,478 @@
-/* ======================================================
-   RESET
-====================================================== */
+/* ===========================
+   GLOBAL
+=========================== */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
-
-    width:100%;
-    height:100%;
-    overflow:hidden;
-   overflow-y:auto;
-
+html{
+    scroll-behavior:smooth;
 }
 
 body{
 
-    font-family:'Inter',sans-serif;
+    font-family:'Poppins',sans-serif;
 
-    background:#FFF8F5;
+    background:linear-gradient(180deg,#fff8f8,#ffeef4,#fff8f7);
 
-    color:#2B2B2B;
+    color:#444;
+
+    overflow-x:hidden;
+
+}
+
+section{
+
+    min-height:100vh;
+
+    padding:90px 8%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
 
     position:relative;
 
 }
 
+h1{
 
+    font-size:4rem;
 
-/* ======================================================
-   BACKGROUND
-====================================================== */
+    font-family:'Pacifico',cursive;
 
-.background{
+    color:#ff4f8b;
 
-    position:fixed;
-
-    inset:0;
-
-    z-index:-2;
-
-    background:
-    radial-gradient(circle at top,#FFE3EB 0%,transparent 40%),
-    radial-gradient(circle at bottom,#FFF1E6 0%,transparent 45%),
-    #FFF8F5;
+    margin-bottom:20px;
 
 }
 
+h2{
 
+    font-size:3rem;
 
-.background::after{
+    color:#ff4f8b;
 
-    content:"";
+    margin-bottom:20px;
+
+    text-align:center;
+
+}
+
+h3{
+
+    font-size:1.5rem;
+
+}
+
+p{
+
+    max-width:800px;
+
+    line-height:1.8;
+
+    text-align:center;
+
+}
+
+.sectionText{
+
+    margin-bottom:40px;
+
+    opacity:.8;
+
+}
+
+.mainBtn{
+
+    text-decoration:none;
+
+    background:#ff4f8b;
+
+    color:white;
+
+    padding:16px 38px;
+
+    border-radius:40px;
+
+    margin-top:40px;
+
+    display:inline-block;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.mainBtn:hover{
+
+    transform:translateY(-5px);
+
+    background:#ff2d73;
+
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+#hero{
+
+    text-align:center;
+
+}
+
+.hero-content{
+
+    max-width:700px;
+
+}
+
+.hero-content h3{
+
+    color:#999;
+
+    margin-bottom:20px;
+
+}
+
+.scroll{
 
     position:absolute;
 
-    inset:0;
+    bottom:40px;
 
-    backdrop-filter:blur(60px);
+    animation:bounce 2s infinite;
+
+    color:#888;
 
 }
 
+/* ===========================
+   GLASS CARDS
+=========================== */
 
+.mustafaBox,
+.letter,
+.complimentBox,
+.diceArea{
 
-/* ======================================================
+    width:100%;
+
+    max-width:700px;
+
+    padding:40px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.55);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.6);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+button{
+
+    padding:15px 32px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    background:#ff4f8b;
+
+    color:white;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    margin-top:25px;
+
+}
+
+button:hover{
+
+    transform:translateY(-4px);
+
+    background:#ff2d73;
+
+}
+
+/* ===========================
+   SLAP
+=========================== */
+
+#mustafaFace{
+
+    width:180px;
+
+    height:180px;
+
+    background:white;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:5rem;
+
+    margin:auto;
+
+    margin-bottom:30px;
+
+    transition:.2s;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+}
+
+#slapCount{
+
+    margin-bottom:10px;
+
+}
+
+#slapMessage{
+
+    margin-top:15px;
+
+}
+
+/* ===========================
+   PROMISE GRID
+=========================== */
+
+.promiseGrid{
+
+    margin-top:50px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    width:100%;
+
+    max-width:900px;
+
+}
+
+.promiseCard{
+
+    padding:30px;
+
+    background:white;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.promiseCard:hover{
+
+    transform:translateY(-8px);
+
+}
+
+/* ===========================
+   LOVE CARDS
+=========================== */
+
+.cardContainer{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:30px;
+
+    width:100%;
+
+    max-width:1000px;
+
+}
+
+.loveCard{
+
+    height:260px;
+
+    perspective:1000px;
+
+    cursor:pointer;
+
+    position:relative;
+
+}
+
+.front,
+.back{
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    border-radius:25px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    backface-visibility:hidden;
+
+    transition:.8s;
+
+    padding:20px;
+
+}
+
+.front{
+
+    background:white;
+
+    font-size:5rem;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
+
+.back{
+
+    background:#ff4f8b;
+
+    color:white;
+
+    transform:rotateY(180deg);
+
+    font-size:1.1rem;
+
+}
+
+.loveCard.flip .front{
+
+    transform:rotateY(180deg);
+
+}
+
+.loveCard.flip .back{
+
+    transform:rotateY(360deg);
+
+}
+
+/* ===========================
+   DATE
+=========================== */
+
+.dateGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:20px;
+
+    width:100%;
+
+    max-width:900px;
+
+    margin-top:40px;
+
+}
+
+.dateChoice{
+
+    min-height:120px;
+
+    font-size:1.1rem;
+
+}
+
+/* ===========================
+   DICE
+=========================== */
+
+#dice{
+
+    font-size:7rem;
+
+    margin-bottom:20px;
+
+    transition:.5s;
+
+}
+
+#giftResult{
+
+    margin-top:30px;
+
+    font-size:1.3rem;
+
+}
+
+/* ===========================
+   ENDING
+=========================== */
+
+#ending p{
+
+    margin:35px 0;
+
+}
+
+footer{
+
+    padding:35px;
+
+    text-align:center;
+
+    background:#ff4f8b;
+
+    color:white;
+
+}
+
+/* ===========================
    FLOATING HEARTS
-====================================================== */
+=========================== */
 
-#hearts{
+#particles{
 
     position:fixed;
 
@@ -89,662 +490,94 @@ body{
 
     position:absolute;
 
-    bottom:-40px;
+    color:#ff7ea8;
 
-    opacity:.8;
+    animation:floatUp linear forwards;
 
-    animation:heartFloat linear forwards;
-
-}
-
-
-
-/* ======================================================
-   PAGES
-====================================================== */
-
-.page{
-
-    display:none;
-
-    width:100%;
-
-    height:100vh;
-
-    padding:40px 32px 26px;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-   overflow-y:auto;
-
-    animation:fade .7s ease;
+    opacity:.25;
 
 }
 
-.page.active{
-
-    display:flex;
-
-}
-
-
-
-/* ======================================================
-   CONTAINER
-====================================================== */
-
-.container{
-
-    width:100%;
-
-    max-width:390px;
-
-    margin:auto;
-
-   display:flex;
-
-   flex-direction:column;
-
-   Align-items:center;
-
-}
-
-
-
-/* ======================================================
-   TYPOGRAPHY
-====================================================== */
-
-.top-text{
-
-    font-size:12px;
-
-    letter-spacing:4px;
-
-    text-transform:uppercase;
-
-    color:#C1788D;
-
-    margin-bottom:18px;
-
-}
-
-
-
-h1{
-
-    font-family:"Playfair Display",serif;
-
-    font-size:46px;
-
-    line-height:1.1;
-
-    margin-bottom:24px;
-
-    color:#222;
-
-}
-
-
-
-h2{
-
-    font-family:"Playfair Display",serif;
-
-    font-size:34px;
-
-    margin-bottom:20px;
-
-}
-
-
-
-.paragraph{
-
-    line-height:1.9;
-
-    font-size:16px;
-
-    color:#666;
-
-}
-
-
-
-.quote{
-
-    margin-top:30px;
-
-    color:#C1788D;
-
-    font-style:italic;
-
-}
-
-
-
-/* ======================================================
-   BUTTONS
-====================================================== */
-
-button{
-
-    width:100%;
-
-    margin-top:36px;
-
-    padding:18px;
-
-    border:none;
-
-    border-radius:50px;
-
-    background:#D76C82;
-
-    color:white;
-
-    font-size:15px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-}
-
-button:active{
-
-    transform:scale(.97);
-
-}
-
-.loveButton{
-
-    background:#D76C82;
-
-}
-
-.sadButton{
-
-    background:white;
-
-    color:#222;
-
-    border:1px solid #E8D6DA;
-
-}
-
-
-
-/* ======================================================
-   LOADER
-====================================================== */
-
-.loader{
-
-    width:220px;
-
-    height:8px;
-
-    background:#F2DDE3;
-
-    border-radius:20px;
-
-    margin:35px auto;
-
-    overflow:hidden;
-
-}
-
-.loader span{
-
-    display:block;
-
-    width:35%;
-
-    height:100%;
-
-    background:#D76C82;
-
-    animation:loading 2s infinite;
-
-}
-
-
-
-/* ======================================================
-   COUNTER
-====================================================== */
-
-.counter{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:14px;
-
-    margin-top:30px;
-
-}
-
-.box{
-
-    background:rgba(255,255,255,.75);
-
-    backdrop-filter:blur(15px);
-
-    border-radius:22px;
-
-    padding:18px 10px;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.06);
-
-}
-
-.box span{
-
-    display:block;
-
-    font-size:28px;
-
-    font-weight:700;
-
-    color:#D76C82;
-
-}
-
-.box small{
-
-    color:#777;
-
-    font-size:11px;
-
-}
-/* ======================================================
-   LETTER
-====================================================== */
-
-.letter{
-
-    margin-top:20px;
-
-    max-height:320px;
-
-    overflow-y:auto;
-
-    text-align:left;
-
-    padding-right:8px;
-
-}
-
-.letter p{
-
-    line-height:2;
-
-    color:#555;
-
-    font-size:16px;
-
-}
-
-.letter::-webkit-scrollbar{
-
-    width:5px;
-
-}
-
-.letter::-webkit-scrollbar-thumb{
-
-    background:#D76C82;
-
-    border-radius:20px;
-
-}
-
-
-
-/* ======================================================
-   COMPLIMENTS
-====================================================== */
-
-#complimentArea{
-
-    margin-top:30px;
-
-    min-height:260px;
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-    gap:12px;
-
-}
-
-.compliment{
-
-    background:white;
-
-    padding:12px 18px;
-
-    border-radius:30px;
-
-    color:#D76C82;
-
-    font-weight:600;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.06);
-
-    animation:pop .5s forwards;
-
-}
-
-
-
-/* ======================================================
-   SLAP MUSTAFA
-====================================================== */
-
-#mustafaFace{
-
-    width:220px;
-
-    height:220px;
-
-    margin:30px auto;
-
-    background:white;
-
-    border-radius:50%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:110px;
-
-    box-shadow:0 20px 45px rgba(0,0,0,.12);
-
-    cursor:pointer;
-
-    user-select:none;
-
-    transition:all .08s ease;
-
-}
-
-#mustafaFace:active{
-
-    transform:scale(.86);
-
-}
-
-
-
-#slapCounter{
-
-    margin-top:15px;
-
-    font-size:28px;
-
-    font-weight:700;
-
-    color:#D76C82;
-
-}
-
-
-
-#slapMessage{
-
-    min-height:40px;
-
-    margin-top:20px;
-
-    color:#666;
-
-    font-style:italic;
-
-    font-size:16px;
-
-}
-
-
-
-#continueButton{
-
-    display:none;
-
-}
-
-
-
-/* ======================================================
-   FINAL CHOICE
-====================================================== */
-
-.choiceButtons{
-
-    margin-top:40px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:18px;
-
-}
-
-
-
-/* ======================================================
-   HAPPY PAGE
-====================================================== */
-
-#happy h1{
-
-    font-size:90px;
-
-    animation:pulse 1.5s infinite;
-
-}
-
-
-
-/* ======================================================
-   GOODBYE PAGE
-====================================================== */
-
-.goodbye{
-
-    background:#171717;
-
-    color:white;
-
-}
-
-.goodbye h1{
-
-    color:white;
-
-    font-size:90px;
-
-}
-
-.goodbye h2{
-
-    color:white;
-
-}
-
-.goodbye .paragraph{
-
-    color:#CFCFCF;
-
-}
-
-.goodbye .top-text{
-
-    color:#999;
-
-}
-
-
-
-/* ======================================================
+/* ===========================
    ANIMATIONS
-====================================================== */
+=========================== */
 
-@keyframes fade{
+@keyframes bounce{
 
-    from{
-
-        opacity:0;
-
-        transform:translateY(20px);
-
-    }
-
-    to{
-
-        opacity:1;
+    0%,100%{
 
         transform:translateY(0);
-
-    }
-
-}
-
-
-
-@keyframes loading{
-
-    from{
-
-        transform:translateX(-180%);
-
-    }
-
-    to{
-
-        transform:translateX(320%);
-
-    }
-
-}
-
-
-
-@keyframes heartFloat{
-
-    from{
-
-        transform:translateY(0);
-
-        opacity:.9;
-
-    }
-
-    to{
-
-        transform:translateY(-120vh);
-
-        opacity:0;
-
-    }
-
-}
-
-
-
-@keyframes pop{
-
-    from{
-
-        opacity:0;
-
-        transform:scale(.6);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:scale(1);
-
-    }
-
-}
-
-
-
-@keyframes pulse{
-
-    0%{
-
-        transform:scale(1);
 
     }
 
     50%{
 
-        transform:scale(1.08);
-
-    }
-
-    100%{
-
-        transform:scale(1);
+        transform:translateY(-10px);
 
     }
 
 }
 
+@keyframes floatUp{
 
+    from{
 
-/* ======================================================
-   RESPONSIVE
-====================================================== */
+        transform:translateY(100vh) scale(.5);
 
-@media(max-width:390px){
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:translateY(-120vh) scale(1.4);
+
+        opacity:.4;
+
+    }
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
 
     h1{
 
-        font-size:40px;
+        font-size:2.8rem;
 
     }
 
     h2{
 
-        font-size:30px;
+        font-size:2.2rem;
 
     }
 
-    .paragraph{
+    section{
 
-        font-size:15px;
+        padding:70px 6%;
+
+    }
+
+    .mustafaBox,
+    .letter,
+    .complimentBox,
+    .diceArea{
+
+        padding:28px;
 
     }
 
     #mustafaFace{
 
-        width:180px;
+        width:140px;
 
-        height:180px;
+        height:140px;
 
-        font-size:90px;
+        font-size:4rem;
 
     }
 
