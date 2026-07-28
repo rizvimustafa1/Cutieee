@@ -184,21 +184,39 @@ dice.style.transform="rotate(0deg)";
 
 });
 
-
 /* ===========================
-FINAL BUTTON
+FINAL DECISION
 =========================== */
 
-const forgive=document.getElementById("forgiveBtn");
-const ending=document.getElementById("endingText");
+const yesBtn=document.getElementById("yesBtn");
+const noBtn=document.getElementById("noBtn");
 
-forgive.addEventListener("click",()=>{
+const happyEnding=document.getElementById("happyEnding");
+const sadEnding=document.getElementById("sadEnding");
 
-ending.innerHTML=
+yesBtn.addEventListener("click",()=>{
 
-"🥹❤️ Thank you for reaching the end.<br>I hope this little website made you smile even a tiny bit.";
+    happyEnding.style.display="flex";
 
-createConfetti();
+    happyEnding.scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+    createConfetti();
+
+});
+
+noBtn.addEventListener("click",()=>{
+
+    sadEnding.style.display="flex";
+
+    sadEnding.scrollIntoView({
+
+        behavior:"smooth"
+
+    });
 
 });
 
