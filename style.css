@@ -582,3 +582,88 @@ footer{
     }
 
 }
+/* ===========================
+FINAL DECISION
+=========================== */
+
+.decisionButtons{
+
+    display:flex;
+    gap:25px;
+    margin-top:40px;
+    flex-wrap:wrap;
+    justify-content:center;
+
+}
+
+.yesBtn{
+
+    background:#ff4f8b;
+
+}
+
+.noBtn{
+
+    background:#555;
+
+}
+
+.noBtn:hover{
+
+    background:#333;
+
+}
+
+.endingPage{
+
+    display:none;
+
+    min-height:100vh;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:80px 8%;
+
+}
+
+.endingCard{
+
+    max-width:750px;
+
+    background:rgba(255,255,255,.65);
+
+    backdrop-filter:blur(20px);
+
+    padding:60px;
+
+    border-radius:35px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+#happyEnding{
+
+    background:
+    linear-gradient(180deg,#fff7f7,#ffe8ef,#fffdfd);
+
+}
+
+#sadEnding{
+
+    background:
+    linear-gradient(180deg,#2c2c38,#444,#2b2b34);
+
+    color:white;
+
+}
+
+#sadEnding h1,
+#sadEnding h3{
+
+    color:white;
+
+}
